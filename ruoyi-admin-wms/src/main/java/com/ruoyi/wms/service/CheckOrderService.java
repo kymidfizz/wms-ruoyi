@@ -42,6 +42,7 @@ public class CheckOrderService {
     private final CheckOrderDetailService checkOrderDetailService;
     private final InventoryService inventoryService;
     private final InventoryHistoryService inventoryHistoryService;
+    private final WarehouseService warehouseService;
 
     /**
      * 查询库存盘点单据

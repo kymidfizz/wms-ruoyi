@@ -4,4 +4,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.wms.mapper.WarehouseMapper">
 
+    <resultMap id="itemWarehouseMapVo" type="com.ruoyi.wms.domain.vo.WarehouseMapVo">
+        <association property="warehouseVo" javaType="com.ruoyi.wms.domain.vo.WarehouseVo">
+            <id property="id" column="warehouse_id"/> <!-- 映射 item 的 id -->
+        </association>
+    </resultMap>
+
+    <select id="queryWarehouseMapVos" resultMap="itemWarehouseMapVo">
+        select
+        wh.id as warehouse_id,
+        wh.*
+        from wms_warehouse wh
+        where wh.id in
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
 </mapper>

@@ -8,6 +8,8 @@ import com.ruoyi.common.core.constant.UserConstants;
 import com.ruoyi.common.core.xss.Xss;
 import com.ruoyi.common.sensitive.annotation.Sensitive;
 import com.ruoyi.common.sensitive.core.SensitiveStrategy;
+import com.ruoyi.system.domain.vo.SysUserVo;
+import io.github.linpeilie.annotations.AutoMapper;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -28,6 +30,7 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @TableName("sys_user")
+@AutoMapper(target = SysUserVo.class)
 public class SysUser extends BaseEntity {
 
     /**

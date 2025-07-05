@@ -1,6 +1,8 @@
 package com.ruoyi.wms.controller;
 
+import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.annotation.SaCheckPermission;
+import cn.dev33.satoken.annotation.SaIgnore;
 import com.ruoyi.common.core.constant.ServiceConstants;
 import com.ruoyi.common.core.domain.R;
 import com.ruoyi.common.core.validate.AddGroup;
@@ -29,6 +31,7 @@ import java.util.List;
  * @author zcc
  * @date 2024-08-13
  */
+@SaIgnore
 @Validated
 @RequiredArgsConstructor
 @RestController
@@ -40,7 +43,7 @@ public class CheckOrderController extends BaseController {
     /**
      * 查询库存盘点单据列表
      */
-    @SaCheckPermission("wms:check:all")
+//    @SaCheckPermission("wms:check:all")
     @GetMapping("/list")
     public TableDataInfo<CheckOrderVo> list(CheckOrderBo bo, PageQuery pageQuery) {
         return checkOrderService.queryPageList(bo, pageQuery);

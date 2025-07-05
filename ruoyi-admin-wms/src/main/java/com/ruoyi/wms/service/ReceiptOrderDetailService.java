@@ -34,6 +34,7 @@ public class ReceiptOrderDetailService extends ServiceImpl<ReceiptOrderDetailMap
 
     private final ReceiptOrderDetailMapper receiptOrderDetailMapper;
     private final ItemSkuService itemSkuService;
+    private final WarehouseService warehouseService;
 
     /**
      * 查询入库单详情
@@ -118,6 +119,7 @@ public class ReceiptOrderDetailService extends ServiceImpl<ReceiptOrderDetailMap
             return Collections.emptyList();
         }
         itemSkuService.setItemSkuMap(details);
+        warehouseService.setWarehouseMap(details);
         return details;
     }
 }

@@ -14,6 +14,9 @@ import com.ruoyi.common.mybatis.core.page.PageQuery;
 import com.ruoyi.common.mybatis.core.page.TableDataInfo;
 import com.ruoyi.wms.domain.bo.WarehouseBo;
 import com.ruoyi.wms.domain.entity.Warehouse;
+import com.ruoyi.wms.domain.vo.BaseOrderDetailVo;
+import com.ruoyi.wms.domain.vo.ItemSkuMapVo;
+import com.ruoyi.wms.domain.vo.WarehouseMapVo;
 import com.ruoyi.wms.domain.vo.WarehouseVo;
 import com.ruoyi.wms.mapper.WarehouseMapper;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +27,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * 仓库Service业务层处理
@@ -147,5 +153,26 @@ public class WarehouseService extends ServiceImpl<WarehouseMapper, Warehouse> {
             updateList.get(i).setOrderNum((long) i);
         }
         saveOrUpdateBatch(updateList);
+    }
+
+    public void setWarehouseMap(List<? extends BaseOrderDetailVo> details){
+        if (CollUtil.isNotEmpty(details)) {
+            Set<Long> skuIds = details
+                .stream()
+                .map(BaseOrderDetailVo::getWarehouseId)
+                .collect(Collectors.toSet());
+
+            Map<Long, WarehouseMapVo> itemWarehouseMap = this.queryItemSkuMapVosByIds(skuIds);
+
+            details.forEach(detail -> {
+                WarehouseMapVo vo = itemWarehouseMap.get(detail.getWarehouseId());
+                detail.setWarehouseVo(vo.getWarehouseVo());
+            });
+        }
+    }
+
+    public  Map<Long, WarehouseMapVo>queryItemSkuMapVosByIds(Set<Long> skuIds){
+        return warehouseMapper.queryWarehouseMapVos(skuIds).stream()
+            .collect(Collectors.toMap(WarehouseMapVo::getId, Function.identity()));
     }
 }

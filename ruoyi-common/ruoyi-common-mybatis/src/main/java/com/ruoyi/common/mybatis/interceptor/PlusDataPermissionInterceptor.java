@@ -53,6 +53,9 @@ public class PlusDataPermissionInterceptor extends BaseMultiTableInnerIntercepto
         }
         // 解析 sql 分配对应方法
         PluginUtils.MPBoundSql mpBs = PluginUtils.mpBoundSql(boundSql);
+//        String oldSql = mpBs.sql();
+//        String nweSql = oldSql.contains("WHERE")? oldSql.concat(" AND IS_DELETE = 1"): oldSql.concat(" WHERE IS_DELETE = 1");
+//        mpBs.sql(parserSingle(nweSql.concat(" ORDER BY create_time DESC"), ms.getId()));
         mpBs.sql(parserSingle(mpBs.sql(), ms.getId()));
     }
 

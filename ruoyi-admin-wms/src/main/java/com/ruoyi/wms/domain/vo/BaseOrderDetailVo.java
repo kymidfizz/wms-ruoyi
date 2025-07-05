@@ -58,4 +58,6 @@ public class BaseOrderDetailVo implements Serializable {
     private ItemSkuVo itemSku;
 
     private ItemVo item;
+
+    private WarehouseVo warehouseVo;
 }

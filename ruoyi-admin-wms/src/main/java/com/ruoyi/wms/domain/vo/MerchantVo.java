@@ -2,6 +2,8 @@ package com.ruoyi.wms.domain.vo;
 
 import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
 import com.alibaba.excel.annotation.ExcelProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.ruoyi.common.core.utils.LongSerializer;
 import com.ruoyi.common.excel.annotation.ExcelDictFormat;
 import com.ruoyi.common.excel.convert.ExcelDictConvert;
 import io.github.linpeilie.annotations.AutoMapper;
@@ -29,6 +31,7 @@ public class MerchantVo implements Serializable {
      * id
      */
     @ExcelProperty(value = "id")
+    @JsonSerialize(using = LongSerializer.class)
     private Long id;
 
     /**

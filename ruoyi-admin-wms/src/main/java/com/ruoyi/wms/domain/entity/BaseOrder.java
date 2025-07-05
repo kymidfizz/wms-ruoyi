@@ -30,6 +30,10 @@ public class BaseOrder extends BaseEntity {
      */
     private BigDecimal totalAmount;
     /**
+     * 供应商
+     */
+    private Long merchantId;
+    /**
      * 订单状态
      */
     private Integer orderStatus;

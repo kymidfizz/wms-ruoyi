@@ -1,6 +1,7 @@
 package com.ruoyi.wms.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
+import cn.dev33.satoken.annotation.SaIgnore;
 import com.ruoyi.common.core.constant.ServiceConstants;
 import com.ruoyi.common.core.domain.R;
 import com.ruoyi.common.core.validate.AddGroup;
@@ -29,6 +30,7 @@ import java.util.List;
  * @author zcc
  * @date 2024-07-19
  */
+@SaIgnore
 @Validated
 @RequiredArgsConstructor
 @RestController
@@ -75,7 +77,7 @@ public class ReceiptOrderController extends BaseController {
     @SaCheckPermission("wms:receipt:all")
     @Log(title = "入库单", businessType = BusinessType.INSERT)
     @RepeatSubmit()
-    @PostMapping()
+    @PostMapping("/add")
     public R<Void> add(@Validated(AddGroup.class) @RequestBody ReceiptOrderBo bo) {
         bo.setOrderStatus(ServiceConstants.ReceiptOrderStatus.PENDING);
         receiptOrderService.insertByBo(bo);

@@ -3,6 +3,8 @@ package com.ruoyi.wms.domain.entity;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.ruoyi.common.mybatis.core.domain.BaseEntity;
+import com.ruoyi.wms.domain.vo.ItemSkuVo;
+import io.github.linpeilie.annotations.AutoMapper;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -12,6 +14,7 @@ import java.math.BigDecimal;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @TableName("wms_item_sku")
+@AutoMapper(target = ItemSkuVo.class)
 public class ItemSku extends BaseEntity {
 
     @Serial

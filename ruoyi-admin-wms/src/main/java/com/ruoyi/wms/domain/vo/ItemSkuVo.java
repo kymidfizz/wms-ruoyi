@@ -2,6 +2,8 @@ package com.ruoyi.wms.domain.vo;
 
 import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
 import com.alibaba.excel.annotation.ExcelProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.ruoyi.common.core.utils.LongSerializer;
 import io.github.linpeilie.annotations.AutoMapper;
 import lombok.Data;
 import com.ruoyi.wms.domain.entity.ItemSku;
@@ -24,6 +26,7 @@ public class ItemSkuVo implements Serializable {
      *
      */
     @ExcelProperty(value = "")
+    @JsonSerialize(using = LongSerializer.class)
     private Long id;
 
     /**

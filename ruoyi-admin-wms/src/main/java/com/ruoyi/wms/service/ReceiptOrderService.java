@@ -81,7 +81,7 @@ public class ReceiptOrderService {
         lqw.eq(StringUtils.isNotBlank(bo.getOrderNo()), ReceiptOrder::getOrderNo, bo.getOrderNo());
         lqw.eq(bo.getTotalAmount() != null, ReceiptOrder::getTotalAmount, bo.getTotalAmount());
         lqw.eq(bo.getOrderStatus() != null, ReceiptOrder::getOrderStatus, bo.getOrderStatus());
-        lqw.orderByDesc(BaseEntity::getCreateTime);
+//        lqw.orderByDesc(BaseEntity::getCreateTime);
         return lqw;
     }
 

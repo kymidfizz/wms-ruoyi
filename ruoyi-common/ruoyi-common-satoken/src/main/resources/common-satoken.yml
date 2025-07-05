@@ -11,3 +11,5 @@ sa-token:
   is-read-cookie: false
   # token前缀
   token-prefix: "Bearer"
+  #排除路径
+  exclude-routes: "/wms/checkOrder/**"

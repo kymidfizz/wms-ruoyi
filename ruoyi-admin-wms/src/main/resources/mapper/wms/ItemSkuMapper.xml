@@ -48,6 +48,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         inner join wms_item item on sku.item_id=item.id
         inner join wms_item_category category on item.item_category=category.id
         <where>
+            <if test="bo.id != null and bo.id != ''">
+                and sku.id = #{bo.id}
+            </if>
             <if test="bo.itemName != null and bo.itemName != ''">
                 and item.item_name like concat('%', #{bo.itemName}, '%')
             </if>

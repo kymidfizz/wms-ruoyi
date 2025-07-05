@@ -2,6 +2,8 @@ package com.ruoyi.wms.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.ruoyi.common.mybatis.core.domain.BaseEntity;
+import com.ruoyi.wms.domain.vo.ItemBrandVo;
+import io.github.linpeilie.annotations.AutoMapper;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -17,6 +19,7 @@ import java.io.Serial;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @TableName("wms_item_brand")
+@AutoMapper(target = ItemBrandVo.class)
 public class ItemBrand extends BaseEntity {
 
     @Serial

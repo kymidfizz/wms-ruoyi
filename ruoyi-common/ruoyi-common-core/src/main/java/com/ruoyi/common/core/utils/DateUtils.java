@@ -27,6 +27,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
     public static final String YYYY_MM = "yyyy-MM";
 
     public static final String YYYY_MM_DD = "yyyy-MM-dd";
+    public static final String YY_MM_DD = "yyMMdd";
 
     public static final String YYYYMMDDHHMMSS = "yyyyMMddHHmmss";
 
@@ -44,6 +45,16 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      */
     public static Date getNowDate() {
         return new Date();
+    }
+
+    public static Date getNowDate(final String pattern) {
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+        String dateStr = sdf.format(new Date());
+        try {
+            return sdf.parse(dateStr);
+        } catch (Exception e) {
+            return new Date();
+        }
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.ruoyi.wms.domain.bo;
 
 import com.ruoyi.common.core.validate.AddGroup;
+import com.ruoyi.common.core.validate.DeleteGroup;
 import com.ruoyi.common.core.validate.EditGroup;
 import com.ruoyi.common.mybatis.core.domain.BaseEntity;
 import jakarta.validation.constraints.NotNull;
@@ -12,6 +13,13 @@ import java.math.BigDecimal;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class BaseOrderDetailBo extends BaseEntity {
+
+    /**
+     * 行号
+     */
+    @NotNull(message = "行号不能为空", groups = { AddGroup.class, EditGroup.class })
+    private Long rowNo;
+
     /**
      * 入库单号
      */
@@ -20,7 +28,7 @@ public class BaseOrderDetailBo extends BaseEntity {
     /**
      *
      */
-    @NotNull(message = "不能为空", groups = { EditGroup.class })
+    @NotNull(message = "id不能为空", groups = { EditGroup.class, DeleteGroup.class})
     private Long id;
 
     /**
@@ -32,8 +40,13 @@ public class BaseOrderDetailBo extends BaseEntity {
     /**
      * 入库数量
      */
-    @NotNull(message = "出入库数量不能为空", groups = { AddGroup.class, EditGroup.class })
+    @NotNull(message = "数量不能为空", groups = { AddGroup.class, EditGroup.class })
     private BigDecimal quantity;
+
+    /**
+     * 批次
+     */
+    private String batch;
 
     /**
      * 金额

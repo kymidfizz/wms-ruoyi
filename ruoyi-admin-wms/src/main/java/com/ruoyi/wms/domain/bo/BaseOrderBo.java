@@ -23,7 +23,7 @@ public class BaseOrderBo<T extends BaseOrderDetailBo> extends BaseEntity {
     /**
      * 业务单号
      */
-    @NotBlank(message = "入库单号单号不能为空", groups = { AddGroup.class, EditGroup.class })
+    @NotBlank(message = "单号不能为空", groups = { AddGroup.class, EditGroup.class })
     private String orderNo;
 
     /**
@@ -49,5 +49,6 @@ public class BaseOrderBo<T extends BaseOrderDetailBo> extends BaseEntity {
     /**
      * 商品信息
      */
+    @NotNull(message = "行信息不能为空", groups = { AddGroup.class, EditGroup.class })
     private List<T> details;
 }

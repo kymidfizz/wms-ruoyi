@@ -2,6 +2,8 @@ package com.ruoyi.wms.domain.vo;
 
 import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
 import com.alibaba.excel.annotation.ExcelProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.ruoyi.common.core.utils.LongSerializer;
 import com.ruoyi.common.mybatis.core.domain.BaseVo;
 import com.ruoyi.wms.domain.entity.Warehouse;
 import io.github.linpeilie.annotations.AutoMapper;
@@ -22,6 +24,7 @@ public class WarehouseVo extends BaseVo {
      *
      */
     @ExcelProperty(value = "")
+    @JsonSerialize(using = LongSerializer.class)
     private Long id;
 
     /**
